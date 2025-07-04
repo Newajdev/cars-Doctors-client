@@ -24,7 +24,7 @@ const Services = () => {
                     </div>
                     <p className='text-center text-4xl font-bold'>Prcie ${price}</p>
                     <div className='flex justify-center p-12'>
-                        <Link to={`/services/procees/${service_id}/my`} className="btn bg-red-700 p-8 text-white">Proceed Checkout</Link>
+                        <Link to={`/services/procees/${service_id}`} className="btn bg-red-700 p-8 text-white">Proceed Checkout</Link>
                     </div>
 
                 </div>

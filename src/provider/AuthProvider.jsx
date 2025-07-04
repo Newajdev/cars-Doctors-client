@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import auth from "../Firebase.config";
 
 // eslint-disable-next-line react-refresh/only-export-components
@@ -19,6 +19,10 @@ const AuthProvider = ({ children }) => {
         setloadign(true)
         return signInWithEmailAndPassword(auth, email, password)
     }
+    const LogOut = () =>{
+        setloadign(true)
+        return signOut(auth);
+    }
 
     useEffect(()=>{
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
@@ -37,8 +41,10 @@ const AuthProvider = ({ children }) => {
 
     const UserInfo = {
         user,
+        loadign,
         registerUser,
-        loginUser
+        loginUser,
+        LogOut
     }
     return (
         <AuthContext.Provider value={UserInfo}>

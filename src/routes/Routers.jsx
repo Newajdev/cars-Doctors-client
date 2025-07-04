@@ -18,14 +18,6 @@ const router = createBrowserRouter([
                 element: <Home></Home>
             },
             {
-                path: "/register",
-                element: <Register></Register>
-            },
-            {
-                path: "/login",
-                element: <Login></Login>
-            },
-            {
                 path: "/services/:id",
                 element: <Services></Services>,
                 loader: ({ params }) => fetch(`http://localhost:5000/services/${params.id}`)
@@ -46,7 +38,15 @@ const router = createBrowserRouter([
                 loader: ({ params }) => fetch(`http://localhost:5000/bookings/?${params.id}`)
             },
         ]
-    }
+    },
+    {
+        path: "/register",
+        element: <Register></Register>
+    },
+    {
+        path: "/login",
+        element: <Login></Login>
+    },
 ])
 
 export default router

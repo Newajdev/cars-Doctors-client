@@ -7,8 +7,8 @@ export const AuthContext = createContext(null);
 
 const AuthProvider = ({ children }) => {
 
-    const [user, setuser] = useState(null)
-    const [loadign, setloadign] = useState(true)
+    const [user, setuser] = useState(null);
+    const [loadign, setloadign] = useState(true);
     
     const registerUser = (email, password) =>{
         setloadign(true)
@@ -30,10 +30,13 @@ const AuthProvider = ({ children }) => {
         }
 
     },[])
+    
+    
 
     
 
     const UserInfo = {
+        user,
         registerUser,
         loginUser
     }

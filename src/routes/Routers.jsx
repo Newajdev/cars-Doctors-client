@@ -28,15 +28,10 @@ const router = createBrowserRouter([
                 loader: ({ params }) => fetch(`http://localhost:5000/services/process/${params.service_id}`)
             },
             {
-                path: "/carddetails/:email",
+                path: "/carddetails",
                 element: <CardDetails></CardDetails>,
-                loader: ({ params }) => fetch(`http://localhost:5000/bookings/?${params.email}`)
             },
-            {
-                path: "/carddetails/:id/update",
-                element: <UpdateBookings></UpdateBookings>,
-                loader: ({ params }) => fetch(`http://localhost:5000/bookings/?${params.id}`)
-            },
+            
         ]
     },
     {

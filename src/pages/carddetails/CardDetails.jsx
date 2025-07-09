@@ -1,10 +1,19 @@
-import { useLoaderData } from "react-router-dom";
 import Banner from "../home/banner/Banner";
 import CardItem from "./CardItem";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../provider/AuthProvider";
 
 
 const CardDetails = () => {
-    const Bookings = useLoaderData()
+    const [Bookings, setBookings] = useState([])
+    const {user} = useContext(AuthContext);
+
+    useEffect(()=>{
+        fetch (`http://localhost:5000/bookings/${user?.email}`)
+        .then (res => res.json())
+        .then (data => setBookings(data))
+    },[user?.email])
+
     return (
         <div>
             <Banner></Banner>

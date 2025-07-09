@@ -1,27 +1,12 @@
 import { Link, NavLink } from "react-router-dom";
 import logo from '../../../assets/logo.svg'
 import { IoIosLogOut } from "react-icons/io";
-import { useContext, useEffect, useState } from "react";
+import { useContext} from "react";
 import { AuthContext } from "../../../provider/AuthProvider";
 import { MdOutlineShoppingBag } from "react-icons/md";
 
 const Navbar = () => {
     const { user , LogOut } = useContext(AuthContext)
-    // const [Bookings, setBookings] = useState([])
-    
-
-    // const userEmail = user.email ;
-    // console.log(userEmail);
-    
-    
-    // useEffect(()=>{
-    //     fetch(`http://localhost:5000/bookings/?${userEmail}`)
-    //     .then(res => res.json())
-    //     .then(data => {
-    //         setBookings(data)
-    //         // console.log(Bookings)
-    //     } )
-    // },[setBookings, userEmail])
 
     const hendlerLogOut = () =>{
         LogOut()
@@ -67,7 +52,7 @@ const Navbar = () => {
                         <div className="indicator mr-3">
                         {/* <span className="indicator-item px-2 rounded-full bg-red-400 text-white ">{Bookings.length}</span> */}
                         <span className="indicator-item px-2 rounded-full bg-red-400 text-white "></span>
-                            <NavLink className="m-2 bg-none border-none hover:bg-none" to={`/carddetails/${user.email}`}><MdOutlineShoppingBag className="font-bold text-2xl" /></NavLink>
+                            <NavLink className="m-2 bg-none border-none hover:bg-none" to={`/carddetails`}><MdOutlineShoppingBag className="font-bold text-2xl" /></NavLink>
                         </div>
                     </> : ''
                 }

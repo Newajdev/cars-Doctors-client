@@ -6,6 +6,7 @@ import { FcGoogle } from 'react-icons/fc';
 import RegistrationImage from '../../assets/images/login/login.svg'
 import Navbar from '../shared/havbar/Navbar';
 import Swal from 'sweetalert2';
+import axios from 'axios';
 
 const Login = () => {
     const { loginUser } = useContext(AuthContext);
@@ -30,8 +31,18 @@ const Login = () => {
                     timer: 1000
                 });
                 form.reset();
-                // navigate(location?.state ? location?.state: "/")
+                
                 // get access token
+                const logedinUser = {email}
+                axios.post('http://localhost:5000/jwt', logedinUser, {withCredentials: true})
+                .then(res => {
+                    console.log(res.data)
+                    
+                    if(res.data.success){
+                        navigate(location?.state ? location?.state: "/")
+                    }
+                })
+                .catch(error => console.log(error))
             })
             .catch(error => {
                 Swal.fire({

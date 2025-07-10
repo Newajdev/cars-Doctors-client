@@ -3,17 +3,23 @@ import CardItem from "./CardItem";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 
 const CardDetails = () => {
     const [Bookings, setBookings] = useState([])
     const { user } = useContext(AuthContext);
 
+
+
     useEffect(() => {
-        fetch(`http://localhost:5000/bookings?email=${user?.email}`)
-            .then(res => res.json())
-            .then(data => setBookings(data))
-    }, [user?.email])
+        if (!user?.email) return;
+
+        const URL = `http://localhost:5000/bookings?email=${user.email}`;
+        axios.get(URL, { withCredentials: true })
+            .then(res => setBookings(res.data))
+            .catch(error => console.log('Bookings error:', error));
+    }, [user?.email]);
 
 
     const hendleChancelBooking = (_id) => {

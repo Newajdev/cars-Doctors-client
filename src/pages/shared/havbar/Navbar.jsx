@@ -10,7 +10,6 @@ const Navbar = () => {
 
     const hendlerLogOut = () =>{
         LogOut()
-        .then(res => console.log(res))
         .catch(errror => console.log(errror)
         )
     }
@@ -22,6 +21,7 @@ const Navbar = () => {
         <li><NavLink to={"/services"}>Services</NavLink></li>
         <li><NavLink to={"/blog"}>Blog</NavLink></li>
         <li><NavLink to={"/Contact"}>Contact</NavLink></li>
+        <li><NavLink to={"/login"}>login</NavLink></li>
 
 
 

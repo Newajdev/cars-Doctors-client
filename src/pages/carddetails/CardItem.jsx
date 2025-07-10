@@ -1,43 +1,14 @@
 import React from 'react';
 import { FaPen } from 'react-icons/fa';
 import { RxCross2 } from 'react-icons/rx';
-import { data, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
-const CardItem = ({ booking }) => {
+const CardItem = ({ booking, hendleChancelBooking }) => {
 
     const { _id, title, price, name, phone, email, img, status } = booking;
 
-    const hendleChancelBooking = (_id) => {
-
-
-        Swal.fire({
-            title: "Are you sure?",
-            text: "You want to delete your bookings",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!"
-        }).then((result) => {
-            if (result.isConfirmed) {
-
-                fetch(`http://localhost:5000/bookings/${_id}`, {
-                    method: 'DELETE',
-                })
-                    .then(res => res.json())
-                    .then(data => {
-                        if(data.deletedCount > 0){
-                            Swal.fire({
-                                title: "Deleted!",
-                                text: "Your file has been deleted.",
-                                icon: "success"
-                            })
-                        }
-                    });
-            }
-        });
-    }
+    
     
     return (
         <>

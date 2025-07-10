@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../provider/AuthProvider';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaFacebookF, FaLinkedinIn } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
 import RegistrationImage from '../../assets/images/login/login.svg'
@@ -8,8 +8,11 @@ import Navbar from '../shared/havbar/Navbar';
 import Swal from 'sweetalert2';
 
 const Login = () => {
-    const navigate = useNavigate()
     const { loginUser } = useContext(AuthContext);
+    const navigate = useNavigate()
+    const location = useLocation()
+    
+    
 
     const henldeLogin = e => {
         e.preventDefault();
@@ -27,7 +30,8 @@ const Login = () => {
                     timer: 1000
                 });
                 form.reset();
-                navigate('/')
+                // navigate(location?.state ? location?.state: "/")
+                // get access token
             })
             .catch(error => {
                 Swal.fire({

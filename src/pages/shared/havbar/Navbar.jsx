@@ -48,7 +48,7 @@ const Navbar = () => {
             </div>
             <div className="navbar-end flex gap-3">
                 {
-                    user ? <>
+                    user?.email ? <>
                         <div className="indicator mr-3">
                         {/* <span className="indicator-item px-2 rounded-full bg-red-400 text-white ">{Bookings.length}</span> */}
                         <span className="indicator-item px-2 rounded-full bg-red-400 text-white "></span>
@@ -58,7 +58,7 @@ const Navbar = () => {
                 }
                 <button className="btn btn-outline btn-error "><Link to={'/register'}> Appointment </Link></button>
                 {
-                    user ? <button onClick={hendlerLogOut} className="btn btn-error text-white"><Link to={'/'} className="flex justify-center items-center gap-3"> Log out <IoIosLogOut className="font-bold text-xl" /></Link></button> : ''
+                    user?.email ? <button onClick={hendlerLogOut} className="btn btn-error text-white"><Link to={'/'} className="flex justify-center items-center gap-3"> Log out <IoIosLogOut className="font-bold text-xl" /></Link></button> : ''
                 }
             </div>
         </div>

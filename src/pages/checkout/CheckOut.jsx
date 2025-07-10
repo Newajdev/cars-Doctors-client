@@ -39,7 +39,7 @@ const CheckOut = () => {
                         draggable: true
                     });
                     form.reset()
-                    Navigate(`/carddetails/${email}`)
+                    Navigate(`/carddetails`)
                 } else {
                     Swal.fire({
                         title: "Something Wrong",

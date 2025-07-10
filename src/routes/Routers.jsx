@@ -7,6 +7,8 @@ import Services from "../pages/services/services/Services";
 import CheckOut from "../pages/checkout/CheckOut";
 import CardDetails from "../pages/carddetails/CardDetails";
 import UpdateBookings from "../pages/updatebookings/UpdateBookings";
+import Service from "../pages/home/service/Service";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -18,17 +20,25 @@ const router = createBrowserRouter([
                 element: <Home></Home>
             },
             {
+                path: "/services",
+                element: <Service></Service>
+            },
+            {
                 path: "/services/:id",
                 element: <Services></Services>,
                 loader: ({ params }) => fetch(`http://localhost:5000/services/${params.id}`)
             },
             {
                 path: "/services/procees/:service_id",
-                element: <CheckOut></CheckOut>,
+                element: <PrivateRoute><CheckOut></CheckOut></PrivateRoute>,
                 loader: ({ params }) => fetch(`http://localhost:5000/services/process/${params.service_id}`)
             },
             {
                 path: "/carddetails",
+                element: <PrivateRoute><CardDetails></CardDetails></PrivateRoute>
+            },
+            {
+                path: "/carddetails/:id/update",
                 element: <CardDetails></CardDetails>,
             },
             
